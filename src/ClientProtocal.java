@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,29 +17,27 @@ public class ClientProtocal {
     private int state = INITIALSTATE;
     BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public String processServerResponse() throws IOException {
+    public String processServerResponse(JFrame frame, String fromServer) throws IOException {
         String theOutput = null;
-
         if (state == INITIALSTATE) {
-            theOutput = stdIn.readLine();
+            theOutput = JOptionPane.showInputDialog(frame, fromServer);
             state = SENTSTUDENTNUMBER;
         }
         else if (state == SENTSTUDENTNUMBER) {
-                theOutput = stdIn.readLine();
-                state = SENTSTUDENTNAME;
+            theOutput = JOptionPane.showInputDialog(frame, fromServer);
+            state = SENTSTUDENTNAME;
         }
         else if (state == SENTSTUDENTNAME) {
-                theOutput = stdIn.readLine();
-                state = SENTSTUDENTDETAILS;
+            theOutput = JOptionPane.showInputDialog(frame, fromServer);
+            state = SENTSTUDENTDETAILS;
         }
         else if (state == SENTSTUDENTDETAILS){
-
             Random randomNoGenerator = new Random();
             int number = randomNoGenerator.nextInt(999999);
             theOutput = String.format("%06d", number);
             state = SENTPERSONALCODE;
         } else if (state == SENTPERSONALCODE) {
-            theOutput = stdIn.readLine();
+            theOutput = "Okay";
             state = SENTALLINFO;
         } else if (state == SENTALLINFO) {
             theOutput = "Bye!";

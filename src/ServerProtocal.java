@@ -19,12 +19,8 @@ public class ServerProtocal {
         }
         else if (state == REQUESTSTUDENTNUMBER) {
             //check for the input's validity - valid 6 digit student number
-            if (theInput.length() == 6) {
-                theOutput = "What is your firstname and surname (whitespace separated)?";
-                state = REQUESTSTUDENTNAME;
-            } else {
-                theOutput = "You are supposed to enter a 6 digit numeric value like 111531. Try again!";
-            }
+            theOutput = "What is your firstname and surname (whitespace separated)?";
+            state = REQUESTSTUDENTNAME;
         }
         else if (state == REQUESTSTUDENTNAME) {
             theOutput = "What is your Faculty  and course (whitespace separated)?";
