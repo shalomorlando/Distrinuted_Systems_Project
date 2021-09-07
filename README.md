@@ -1,4 +1,4 @@
-# Distrinuted_Systems_Project
+# Distributed_Systems_Project
 
 
 ### Build Instructions
